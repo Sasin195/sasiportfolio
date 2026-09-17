@@ -535,6 +535,12 @@ main,
   justify-self: start;
 }
 
+.contact__error {
+  color: #dc2626;
+  font-size: 0.9rem;
+  justify-self: start;
+}
+
 .contact__success {
   text-align: center;
   padding: 2rem;

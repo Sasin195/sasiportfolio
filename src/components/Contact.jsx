@@ -10,14 +10,38 @@ const initialForm = {
 export default function Contact() {
   const [form, setForm] = useState(initialForm)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
+  const [sending, setSending] = useState(false)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
+    setSending(true)
+    setError('')
+    try {
+      const res = await fetch(
+        `https://formsubmit.co/ajax/${profile.email}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({ ...form }),
+        }
+      )
+      if (!res.ok) throw new Error('Submission failed')
+      setSent(true)
+    } catch {
+      setError(
+        'Something went wrong. Please try again or email me directly.'
+      )
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -61,9 +85,10 @@ export default function Contact() {
               onChange={handleChange}
               required
             />
-            <button type="submit" className="btn btn--primary">
-              Send Message
+            <button type="submit" className="btn btn--primary" disabled={sending}>
+              {sending ? 'Sending...' : 'Send Message'}
             </button>
+            {error && <p className="contact__error">{error}</p>}
           </form>
         )}
 

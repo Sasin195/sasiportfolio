@@ -3,11 +3,11 @@ const profile = {
   role: 'Aspiring Full-Stack Developer',
   tagline:
     'I build clean, responsive, and performant web applications with modern technologies.',
-  email: 'sashank.namana@example.com',
+  email: 'sashanknamana35@gmail.com',
   location: 'India',
   socials: [
-    { label: 'GitHub', url: 'https://github.com/yourusername' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/yourusername' },
+    { label: 'GitHub', url: 'https://github.com/Sasin195' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/sashank-namana-979979354/' },
   ],
   about: [
     'I am a passionate developer who loves turning ideas into polished products. I specialize in building full-stack web applications using the MERN stack, with a strong focus on clean code and great user experience.',
